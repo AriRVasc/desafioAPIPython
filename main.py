@@ -19,7 +19,7 @@ def get_emprestimos(simulacao:Simulacao):
         "Content-Type": "application/x-www-form-urlencoded"
     }
     aut_data = {
-        "client_id": "s",
+        "client_id": "serasa",
         "client_secret": "senha"
     }
     
@@ -32,8 +32,8 @@ def get_emprestimos(simulacao:Simulacao):
             "Authorization": f"Bearer {access_token}"
         }
         params = {
-            "installments": simulacao.parcelas,
-            "value": simulacao.valor
+            "installments": int,
+            "value": int
         }
         ofertas_response = requests.get(ofertas_url, headers=headers, params=params)
         if ofertas_response.status_code == 200:
