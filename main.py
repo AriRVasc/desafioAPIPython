@@ -19,8 +19,8 @@ def get_emprestimos(simulacao:Simulacao):
         "Content-Type": "application/x-www-form-urlencoded"
     }
     aut_data = {
-        "client_id": "serasa",
-        "client_secret": "senha"
+        "client_id": "s",
+        "client_secret": "s"
     }
     
     aut_response = requests.post(aut_url, data=aut_data, headers=aut_headers)
