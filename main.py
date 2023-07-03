@@ -2,18 +2,19 @@ from fastapi import FastAPI, HTTPException
 from typing import Dict
 import requests
 from cachetools import TTLCache
+from models import Simulacao
 
 app = FastAPI()
 cache = TTLCache(maxsize=1000, ttl=3600) 
 
 
 @app.get("/emprestimo")
-def get_emprestimos(cpf: str, parcelas: int, valor: int):
-    if cpf in cache:
-        oferta_cache = cache[cpf]
+def get_emprestimos(simulacao:Simulacao):
+    if simulacao.cpf in cache:
+        oferta_cache = cache[simulacao.cpf]
         return oferta_cache
 
-    aut_url = "https:apidoparceiro/autenticar"
+    aut_url = "https://apidoparceiro/autenticar"
     aut_headers = {
         "Content-Type": "application/x-www-form-urlencoded"
     }
@@ -31,8 +32,8 @@ def get_emprestimos(cpf: str, parcelas: int, valor: int):
             "Authorization": f"Bearer {access_token}"
         }
         params = {
-            "installments": parcelas,
-            "value": valor
+            "installments": simulacao.parcelas,
+            "value": simulacao.valor
         }
         ofertas_response = requests.get(ofertas_url, headers=headers, params=params)
         if ofertas_response.status_code == 200:
@@ -40,11 +41,12 @@ def get_emprestimos(cpf: str, parcelas: int, valor: int):
 
             oferta_adequada = None
             for oferta in ofertas:
-                if oferta["installments"] <= parcelas and oferta["value"] <= valor:
+                if oferta["installments"] <= simulacao.parcelas and oferta["value"] <= simulacao.valor:
                     oferta_adequada = oferta
                     break
 
             if oferta_adequada:
+                cache[simulacao.cpf] = oferta_adequada  
                 return oferta_adequada
             else:
                 raise HTTPException(status_code=204, detail="Oferta não encontrada")
@@ -58,4 +60,3 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app)
-
