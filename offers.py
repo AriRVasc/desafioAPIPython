@@ -22,7 +22,7 @@ def get_emprestimos(simulacao: Simulacao, username: str = Depends(verificar_jwt_
     }
     aut_data = {
         "client_id": "serasa",
-        "client_secret": "6261d2ca-fc49-45d6-a895-5d0c113044df" #alterar senha para a correta
+        "client_secret": "senha" #alterar senha para a correta
     }
 
     aut_response = requests.post(aut_url, data=aut_data, headers=aut_headers)
