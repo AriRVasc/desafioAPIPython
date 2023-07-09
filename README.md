@@ -19,7 +19,7 @@ Para que o projeto execute será necessário configurar algumas informações:
 Abra o arquivo authentication.py e altere a constante SECRET_KEY para a sua chave secreta desejada. Essa chave é usada para codificar e decodificar os tokens JWT.
 No arquivo offer.py, na função get_emprestimos, altere o valor do campo "client_secret" para o valor correto. Esse campo será necessário para autenticar a API do parceiro e obter as ofertas de empréstimo.
 
-### Uso
+### 🚀 Como executar o projeto
 Para iniciar a aplicação, execute o arquivo main.py:
   python main.py
 
@@ -33,22 +33,26 @@ Simulação de Empréstimo
 Para simular um empréstimo, envie uma solicitação GET para http://localhost:8000/emprestimo com os parâmetros da simulação (cpf, valor e parcelas) e inclua o token JWT. 
 A resposta incluirá informações sobre a oferta de empréstimo adequada, se encontrada.
 
-### Tecnologias Utilizadas
-FastAPI: Um framework de desenvolvimento web em Python que permite criar APIs de forma rápida e eficiente.
-Pydantic: Uma biblioteca que oferece suporte para validação e serialização de dados usando anotações de tipo Python.
-JWT (JSON Web Tokens): Um método para tokenização de informações que é usado para autenticação e autorização no projeto.
-requests: Uma biblioteca que permite fazer requisições HTTP para outras APIs.
-cachetools: Uma biblioteca que fornece funcionalidades de cache para armazenar em cache informações de empréstimo.
-uvicorn: Um servidor ASGI (Async Server Gateway Interface) de alto desempenho, usado para executar a aplicação FastAPI.
+### 🛠 Tecnologias
+* FastAPI: Um framework de desenvolvimento web em Python que permite criar APIs de forma rápida e eficiente.
+* Pydantic: Uma biblioteca que oferece suporte para validação e serialização de dados usando anotações de tipo Python.
+* JWT (JSON Web Tokens): Um método para tokenização de informações que é usado para autenticação e autorização no projeto.
+* requests: Uma biblioteca que permite fazer requisições HTTP para outras APIs.
+* cachetools: Uma biblioteca que fornece funcionalidades de cache para armazenar em cache informações de empréstimo.
+* uvicorn: Um servidor ASGI (Async Server Gateway Interface) de alto desempenho, usado para executar a aplicação FastAPI.
 
-### Estrutura do Projeto
-authentication.py: Contém as funções relacionadas à autenticação e geração de tokens JWT.
-models.py: Define o modelo de dados Simulacao utilizando a biblioteca Pydantic.
-offer.py: Contém as funções relacionadas à obtenção das ofertas de empréstimo a partir da API externa.
-main.py: Arquivo principal que configura e inicia a aplicação FastAPI.
-requirements.txt: Lista de dependências do projeto.
+### 💻 Sobre o projeto
+
+* authentication.py: Contém as funções relacionadas à autenticação e geração de tokens JWT.
+* models.py: Define o modelo de dados Simulacao utilizando a biblioteca Pydantic.
+* offer.py: Contém as funções relacionadas à obtenção das ofertas de empréstimo a partir da API externa.
+* main.py: Arquivo principal que configura e inicia a aplicação FastAPI.
 
 
+### 📝 Autoria
+
+Este projeto foi desenvolvido por:
+ #### <sub><b>Ariadne Rodrigues</b></sub></a><br /><a href="https://github.com/AriRVasc" title="GitHub">![icons8-github-48](https://github.com/AriRVasc/desafioAPIPython/assets/102121435/0251c19f-f11c-4741-a516-c614a4390a3e)</a></td>
 
 
 
